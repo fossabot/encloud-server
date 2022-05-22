@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="environment" value="oracle"/>
+        <property name="mybatis.txtype" value="jdbc"/>
+        <property name="mybatis.dstype" value="POOLED"/>
+        <property name="jdbc.driver" value="oracle.jdbc.driver.OracleDriver"/>
+        <property name="jdbc.url" value="jdbc:oracle:thin:@//192.168.3.240/RUBITCAT"/>
+        <property name="jdbc.username" value="ENCLOUD"/>
+        <property name="jdbc.password" value="ENCLOUD"/>
+    </properties>
+
+    <!-- 配置数据源环境 -->
+    <environments default="${environment}">
+        <environment id="${environment}">
+            <transactionManager type="${mybatis.txtype}"/>
+            <dataSource type="${mybatis.dstype}">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 配置DAO映射配置环境路径 -->
+    <mappers>
+        <package name="cn.rubitcat.dao"/>
+        <package name="cn.rubitcat.test"/>
+    </mappers>
+</configuration>
